@@ -1,0 +1,15 @@
+import os
+from pydub import AudioSegment
+
+path = "./wavs"
+output_file = "f../wavs16000/{name}.wav" 
+os.chdir(path)
+audio_files = os.listdir()
+for i, file in enumerate(audio_files):
+    name, ext = os.path.splitext(file)
+    if ext == ".wav":
+       output_str = f"ffmpeg -i {source_file} -ac 1 -ar 16000 {output_file}"
+os.system(output_str)
+print(output_str)
+    if i % 100 == 0:
+        print(f"{i} files converted")
