@@ -1,0 +1,41 @@
+# Data Visualization
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+df_cinsiyet = pd.DataFrame(scaler.fit_transform(df_cinsiyet), columns=df_cinsiyet.columns)
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+plt.subplots(5,5,figsize=(30,30))
+for i in range(1,25):
+    plt.subplot(5,5,i)
+    plt.title(df_cinsiyet.columns[i-1])
+    sns.kdeplot(df_cinsiyet.loc[df_cinsiyet['cinsiyet'] == "kadın", 
+                                df_cinsiyet.columns[i-1]], color= 'pink', label='K')
+    sns.kdeplot(df_cinsiyet.loc[df_cinsiyet['cinsiyet'] == "erkek", 
+                                df_cinsiyet.columns[i-1]], color= 'blue', label='E')
+
+
+path = "/Users/basakkizilay/Desktop/CommonVoice/audio/enhanced_common_voice_tr_28856248.wav"
+X, sample_rate = librosa.load(path, res_type='kaiser_fast',duration=2.5,sr=22050*2,offset=0.5)  
+kadın = librosa.feature.mfcc(y=X, sr=sample_rate, n_mfcc=13)
+kadın = np.mean(librosa.feature.mfcc(y=X, sr=sample_rate, n_mfcc=13), axis=0)
+print(len(kadın))
+
+
+path = "/Users/basakkizilay/Desktop/CommonVoice/audio/enhanced_common_voice_tr_17343281.wav"
+X, sample_rate = librosa.load(path, res_type='kaiser_fast',duration=2.5,sr=22050*2,offset=0.5)  
+erkek = librosa.feature.mfcc(y=X, sr=sample_rate, n_mfcc=13)
+erkek = np.mean(librosa.feature.mfcc(y=X, sr=sample_rate, n_mfcc=13), axis=0)
+print(len(erkek))
+
+
+plt.figure(figsize=(20, 15))
+plt.subplot(3,1,1)
+plt.plot(kadın, label='kadın')
+plt.plot(erkek, label='erkek')
+plt.legend()
+
+
