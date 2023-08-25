@@ -12,5 +12,6 @@ Convert mp3 files to wav file to get properties.
 In model training, data visualization can be applied to MFCC attributes to identify MFCCs that are parsers. Evaluation can be made according to the MFCC values where different colors represent the class attribute.
 
 The data visualization process will be effective in the correct operation of the model.
+<img width="481" alt="Ekran Resmi 2023-08-25 14 13 25" src="https://github.com/basakkizilay/Audio-Data-Processing-MFCC/assets/74621806/76b716ef-b120-4154-adc6-e1b357e51efd">
 
-![Uploading Ekran Resmi 2023-08-25 14.11.42.png…]()
+
